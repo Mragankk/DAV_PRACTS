@@ -1,0 +1,75 @@
+import numpy as np
+
+# (a) Create a 2D array with random values and compute statistics along the second axis.
+def task_a(rows, cols):
+    ARR1 = np.random.rand(rows, cols)
+    mean_arr1 = np.mean(ARR1, axis=1)
+    std_arr1 = np.std(ARR1, axis=1)
+    var_arr1 = np.var(ARR1, axis=1)
+    print("ARR1:\n", ARR1)
+    print("Mean along axis 1:", mean_arr1)
+    print("Standard deviation along axis 1:", std_arr1)
+    print("Variance along axis 1:", var_arr1)
+
+# (b) Create and reshape a 2D array of size m x n.
+def task_b(m, n):
+    ARR = np.random.randint(1, 100, size=(m, n))
+    print("Original Array:\n", ARR)
+    print("Shape:", ARR.shape)
+    print("Type:", type(ARR))
+    print("Data Type:", ARR.dtype)
+    reshaped = ARR.reshape(n, m)
+    print("Reshaped Array:\n", reshaped)
+
+# (c) Test for zero, non-zero, and NaN elements.
+def task_c(arr):
+    zero_indices = np.where(arr == 0)[0]
+    nonzero_indices = np.where(arr != 0)[0]
+    nan_indices = np.where(np.isnan(arr))[0]
+    print("Zero indices:", zero_indices)
+    print("Non-zero indices:", nonzero_indices)
+    print("NaN indices:", nan_indices)
+
+# (d) Operations on three random arrays and compute covariance & correlation.
+def task_d(size):
+    Array1 = np.random.rand(size)
+    Array2 = np.random.rand(size)
+    Array3 = np.random.rand(size)
+    Array4 = Array3 - Array2
+    Array5 = 2 * Array1
+    cov1 = np.cov(Array1, Array4)[0, 1]
+    corr2 = np.corrcoef(Array1, Array5)[0, 1]
+    print("Array1:", Array1)
+    print("Array4:", Array4)
+    print("Array5:", Array5)
+    print("Covariance (Array1, Array4):", cov1)
+    print("Correlation (Array1, Array5):", corr2)
+
+# (e) Sum of first half and product of second half.
+def task_e():
+    Array1 = np.random.rand(10)
+    Array2 = np.random.rand(10)
+    first_half_sum = np.sum(Array1[:5]) + np.sum(Array2[:5])
+    second_half_product = np.prod(Array1[5:]) * np.prod(Array2[5:])
+    print("Array1:", Array1)
+    print("Array2:", Array2)
+    print("Sum of first half:", first_half_sum)
+    print("Product of second half:", second_half_product)
+
+# (f) Determine the size of memory occupied by an array.
+def task_f(size):
+    ARR = np.random.rand(size)
+    memory_size = ARR.nbytes
+    print("Array:", ARR)
+    print("Memory occupied by the array:", memory_size, "bytes")
+
+# (g) Swap rows, reverse column, and update array.
+def task_g(m, n):
+    ARR = np.random.randint(10, 100, size=(m, n))
+    print("Original Array:\n", ARR)
+    row1, row2 = 0, 1  # Swap first and second rows
+    ARR[[row1, row2]] = ARR[[row2, row1]]
+    print("After swapping rows:\n", ARR)
+    col = 0  # Reverse the first column
+    ARR[:, col] = ARR[::-1, col]
+    print("After reversing a column:\n", ARR)
